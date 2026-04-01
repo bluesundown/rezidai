@@ -1,0 +1,98 @@
+{
+  "common": {
+    "home": "Domov",
+    "features": "Funkcie",
+    "pricing": "Ceník",
+    "contact": "Kontakt",
+    "login": "Prihlásiť sa",
+    "signup": "Registrovať sa",
+    "getStarted": "Začať",
+    "logout": "Odhlásiť sa",
+    "dashboard": "Pracovná plocha",
+    "save": "Uložiť",
+    "cancel": "Zrušiť",
+    "delete": "Vymazať",
+    "edit": "Upraviť",
+    "create": "Vytvoriť",
+    "update": "Aktualizovať",
+    "back": "Späť",
+    "next": "Ďalej",
+    "previous": "Predchádzajúce",
+    "publish": "Publikovať",
+    "draft": "Koncept",
+    "published": "Publikované"
+  },
+  "landing": {
+    "heroTitle": "Vytvorte profesionálne realitné inzeráty za sekundy",
+    "heroSubtitle": "Využite AI na generovanie pútavých opisov nehnuteľností, automatické vylepšovanie fotiek a rýchlejšie uzatváranie obchodov.",
+    "ctaButton": "Začať bezplatnú skúšobnú verziu",
+    "demoButton": "Pozrieť demo",
+    "noCreditCard": "Nie je potrebná kreditná karta",
+    "freeListings": "3 inzeráty zdarma"
+  },
+  "auth": {
+    "welcomeBack": "Vitajte späť",
+    "loginPrompt": "Prihláste sa do svojho účtu RealtyAI",
+    "createAccount": "Vytvoriť účet",
+    "signupPrompt": "Začnite svoju bezplatnú skúšobnú verziu dnes",
+    "email": "Email",
+    "password": "Heslo",
+    "firstName": "Meno",
+    "lastName": "Priezvisko",
+    "or": "ALEBO",
+    "noAccount": "Nemáte účet?",
+    "hasAccount": "Už máte účet?"
+  },
+  "editor": {
+    "step1": {
+      "title": "Základné informácie",
+      "subtitle": "Začnite s podstatou",
+      "listingTitle": "Názov inzerátu",
+      "propertyType": "Typ nehnuteľnosti",
+      "transactionType": "Typ transakcie",
+      "price": "Cena",
+      "address": "Adresa",
+      "city": "Mesto",
+      "state": "Štát",
+      "postalCode": "PSČ"
+    },
+    "step2": {
+      "title": "Podrobnosti o nehnuteľnosti",
+      "subtitle": "Pridajte špecifiká",
+      "bedrooms": "Spálne",
+      "bathrooms": "Kúpeľne",
+      "squareFeet": "Štvorcové stopy",
+      "yearBuilt": "Rok výstavby",
+      "description": "Popis",
+      "amenities": "Vybavenosť"
+    },
+    "step3": {
+      "title": "Nahrať fotky",
+      "subtitle": "Ukážte svoju nehnuteľnosť (až 10 obrázkov)",
+      "uploadPrompt": "Kliknite na nahranie alebo pretiahnite",
+      "fileTypes": "JPG, PNG, WEBP až 20MB"
+    },
+    "step4": {
+      "title": "AI popis",
+      "subtitle": "Nechajte AI vytvoriť dokonalý popis",
+      "tone": "Tón",
+      "focus": "Zameranie",
+      "generateButton": "Generovať popis",
+      "nearbyPOI": "Blízke body záujmu"
+    },
+    "step5": {
+      "title": "Kontrola a publikovanie",
+      "subtitle": "Dvakrát skontrolujte všetko pred publikovaním",
+      "photos": "Fotky",
+      "description": "Popis"
+    }
+  },
+  "errors": {
+    "generic": "Niečo sa pokazilo. Prosím skúste to znova.",
+    "required": "Toto pole je povinné",
+    "invalidEmail": "Prosím zadajte platnú emailovú adresu",
+    "passwordShort": "Heslo musí mať aspoň 8 znakov",
+    "uploadFailed": "Nahrávanie súboru zlyhalo",
+    "networkError": "Chyba siete. Prosím skontrolujte svoje pripojenie."
+  }
+}

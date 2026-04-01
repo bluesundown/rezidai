@@ -1,0 +1,168 @@
+version: '3.8'
+
+# Production Docker Compose for RealtyAI
+# Use this file for production deployments
+# Make sure to set all required environment variables in .env file
+
+# Load environment variables from .env file
+env_file:
+  - ./.env
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: realtyai-db
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD is required}
+      # PostgreSQL optimizations for production
+      POSTGRES_MAX_CONNECTIONS: "100"
+      POSTGRES_SHARED_BUFFERS: "256MB"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backups:/backups
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - realtyai-network
+    restart:
+      condition: on-failure
+      delay: 5s
+      max-attempts: 3
+      window: 120s
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4G
+        reservations:
+          cpus: '1.0'
+          memory: 1G
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.backend
+      target: production
+    container_name: realtyai-backend
+    environment:
+      - CONFIG_PATH=/app/config.yaml
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=${DB_NAME}
+      - DATABASE_USER=${DB_USER}
+      - DATABASE_PASSWORD=${DB_PASSWORD}
+      - JWT_SECRET=${JWT_SECRET:?JWT_SECRET is required}
+      - JWT_EXPIRATION_HOURS=${JWT_EXPIRATION_HOURS}
+      - QWEN_API_KEY=${QWEN_API_KEY:?QWEN_API_KEY is required}
+      - QWEN_ENDPOINT=${QWEN_ENDPOINT}
+      - QWEN_MODEL=${QWEN_MODEL}
+      - GOOGLE_MAPS_API_KEY=${GOOGLE_MAPS_API_KEY:?GOOGLE_MAPS_API_KEY is required}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY:?STRIPE_SECRET_KEY is required}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET:?STRIPE_WEBHOOK_SECRET is required}
+      - GOOGLE_OAUTH_CLIENT_ID=${GOOGLE_OAUTH_CLIENT_ID:?GOOGLE_OAUTH_CLIENT_ID is required}
+      - GOOGLE_OAUTH_CLIENT_SECRET=${GOOGLE_OAUTH_CLIENT_SECRET:?GOOGLE_OAUTH_CLIENT_SECRET is required}
+      - APPLE_TEAM_ID=${APPLE_TEAM_ID}
+      - APPLE_CLIENT_ID=${APPLE_CLIENT_ID}
+      - APPLE_CLIENT_SECRET=${APPLE_CLIENT_SECRET}
+      - ENVIRONMENT=production
+      - MOCK_SERVICES_ENABLED=false
+      - MOCK_AI_RESPONSES=false
+      - MOCK_MAPS_RESPONSES=false
+      - MOCK_STRIPE_ENABLED=false
+      - MOCK_OAUTH_VALIDATION=false
+      - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS:?CORS_ALLOWED_ORIGINS is required}
+      - LOG_LEVEL=INFO
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY}
+      - EMAIL_FROM=${EMAIL_FROM}
+      - EMAIL_FROM_NAME=${EMAIL_FROM_NAME}
+    depends_on:
+      db:
+        condition: service_healthy
+    command: >
+      uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4 --access-log true
+    networks:
+      - realtyai-network
+    restart:
+      condition: on-failure
+      delay: 5s
+      max-attempts: 3
+      window: 120s
+    deploy:
+      resources:
+        limits:
+          cpus: '4.0'
+          memory: 4G
+        reservations:
+          cpus: '1.0'
+          memory: 1G
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.frontend
+      target: production
+    container_name: realtyai-frontend
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./ssl:/etc/ssl/certs:ro
+    environment:
+      - NGINX_HOST=${NGINX_HOST:-localhost}
+      - NGINX_PORT=80
+    depends_on:
+      - backend
+    networks:
+      - realtyai-network
+    restart:
+      condition: on-failure
+      delay: 5s
+      max-attempts: 3
+      window: 120s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/index.html"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  postgres_data:
+    driver: local
+  backups:
+    driver: local
+
+networks:
+  realtyai-network:
+    driver: bridge
+    internal: true
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16

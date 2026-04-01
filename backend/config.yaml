@@ -1,0 +1,88 @@
+# Configuration file for RealtyAI Backend
+# IMPORTANT: Sensitive values should be set via environment variables (.env file)
+# Never commit actual API keys or secrets to this file!
+
+api:
+  # Qwen AI API (set via QWEN_API_KEY env variable)
+  qwen_api_key: "YOUR_QWEN_KEY"
+  qwen_endpoint: "https://api.qwen.ai/v1"
+  qwen_model: "qwen-vision-max"
+  
+  # Google Maps API (set via GOOGLE_MAPS_API_KEY env variable)
+  google_maps_api_key: "YOUR_GOOGLE_MAPS_KEY"
+  
+  # Stripe (set via STRIPE_* env variables)
+  stripe_secret_key: "sk_test_..."
+  stripe_webhook_secret: "whsec_..."
+  
+  # OAuth Configuration (set via *_OAUTH_* env variables)
+  oauth:
+    google:
+      client_id: "YOUR_GOOGLE_CLIENT_ID"
+      client_secret: "YOUR_GOOGLE_CLIENT_SECRET"
+      redirect_uri: "http://localhost:8000/api/oauth/google/callback"
+    apple:
+      team_id: "YOUR_APPLE_TEAM_ID"
+      client_id: "YOUR_APPLE_CLIENT_ID"
+      client_secret: "YOUR_APPLE_CLIENT_SECRET"
+      redirect_uri: "http://localhost:8000/api/oauth/apple/callback"
+
+auth:
+  # JWT Secret (set via JWT_SECRET env variable - MUST be at least 32 characters)
+  jwt_secret: "change_this_secret_key_in_production_make_it_long_and_random"
+  jwt_expiration_hours: 24
+  algorithm: "HS256"
+
+database:
+  type: "sqlite"
+  path: "sqlite:///./realtyai.db"
+  # Uncomment for PostgreSQL (production):
+  # type: "postgresql"
+  # host: "db"
+  # port: 5432
+  # name: "realtyai"
+  # user: "realtyai"
+  # password: "password"
+
+images:
+  storage_type: "local"
+  uploads_dir: "./uploads"
+  max_file_size_mb: 20
+  allowed_formats: ["jpg", "jpeg", "png", "webp"]
+  max_images_per_listing: 10
+  thumbnail_size: 300
+
+description:
+  model: "qwen"
+  min_words: 100
+  max_words: 300
+  tones:
+    professional: "Write a professional, formal property description suitable for business listings."
+    friendly: "Write a warm, inviting property description that feels personal and approachable."
+    luxury: "Write an elegant, sophisticated description highlighting premium features and exclusivity."
+    modern: "Write a contemporary, sleek description emphasizing modern amenities and design."
+
+poi:
+  enabled: true
+  search_radius_meters: 1500
+  max_results: 5
+  types: ["restaurant", "school", "park", "shopping_mall", "transit_station"]
+
+i18n:
+  default_language: "en"
+  enabled_languages: ["en", "sk"]
+
+# SECURITY: Mock services should be disabled in production!
+mock_services:
+  enabled: false
+  ai_responses: false
+  maps_responses: false
+  stripe_enabled: false
+  oauth_validation: false
+
+cors:
+  allowed_origins:
+    - "http://localhost:3000"
+    - "http://localhost:8000"
+    - "http://127.0.0.1:3000"
+    - "http://127.0.0.1:8000"

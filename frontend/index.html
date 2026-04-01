@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RealtyAI - AI-powered real estate listing platform. Create professional property descriptions in seconds.">
+    <title>RealtyAI - AI-Powered Real Estate Listings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <div class="logo-icon">
+                        <i data-feather="home"></i>
+                    </div>
+                    <span>RealtyAI</span>
+                </a>
+                <nav class="nav" id="nav">
+                    <a href="/" class="nav-link active" data-nav="home">Home</a>
+                    <a href="#features" class="nav-link" data-nav="features">Features</a>
+                    <a href="#pricing" class="nav-link" data-nav="pricing">Pricing</a>
+                    <a href="#contact" class="nav-link" data-nav="contact">Contact</a>
+                </nav>
+                <div class="nav-actions" id="nav-actions">
+                    <button class="btn btn-secondary btn-sm" id="login-btn">Log In</button>
+                    <button class="btn btn-primary btn-sm" id="signup-btn">Get Started</button>
+                </div>
+                <button class="nav-toggle" id="nav-toggle" style="display: none;">
+                    <i data-feather="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="app">
+        <div data-page="landing">
+            <section class="hero" id="hero">
+                <div class="container">
+                    <div class="grid grid-cols-2" style="align-items: center; min-height: 600px;">
+                        <div>
+                            <h1 style="font-size: 3rem; margin-bottom: var(--spacing-xl);">
+                                Create Professional<br>
+                                <span style="color: var(--color-indigo-600);">Real Estate Listings</span><br>
+                                in Seconds
+                            </h1>
+                            <p style="font-size: 1.125rem; color: var(--color-gray-500); margin-bottom: var(--spacing-2xl); max-width: 500px;">
+                                Leverage AI to generate compelling property descriptions, enhance photos automatically, and close deals faster.
+                            </p>
+                            <div class="flex gap-md">
+                                <button class="btn btn-primary btn-lg" id="hero-cta">Start Free Trial</button>
+                                <button class="btn btn-secondary btn-lg" id="hero-demo">Watch Demo</button>
+                            </div>
+                            <div class="mt-xl text-gray text-sm">
+                                <div class="flex items-center gap-base">
+                                    <div class="flex items-center">
+                                        <i data-feather="check-circle" style="width: 16px; color: var(--color-green-500); margin-right: 8px;"></i>
+                                        <span>No credit card required</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i data-feather="check-circle" style="width: 16px; color: var(--color-green-500); margin-right: 8px;"></i>
+                                        <span>3 listings free</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="card" style="padding: 0; overflow: hidden;">
+                                <div style="background: linear-gradient(135deg, var(--color-indigo-500), var(--color-indigo-700)); padding: var(--spacing-2xl); color: white;">
+                                    <h3 style="color: white; margin-bottom: var(--spacing-md);">AI-Powered Description</h3>
+                                    <p style="color: rgba(255,255,255,0.9);">Modern 3BR apartment in downtown with stunning city views...</p>
+                                </div>
+                                <div style="padding: var(--spacing-xl);">
+                                    <div class="grid grid-cols-3 gap-base mb-lg">
+                                        <div style="background: var(--color-gray-100); height: 100px; border-radius: var(--radius-base);"></div>
+                                        <div style="background: var(--color-gray-100); height: 100px; border-radius: var(--radius-base);"></div>
+                                        <div style="background: var(--color-gray-100); height: 100px; border-radius: var(--radius-base);"></div>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <div class="font-bold" style="font-size: 1.25rem;">$850,000</div>
+                                            <div class="text-gray text-sm">3 bed • 2 bath • 1,850 sqft</div>
+                                        </div>
+                                        <button class="btn btn-primary btn-sm">View Listing</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features" id="features" style="background: var(--color-gray-50); padding: var(--spacing-5xl) 0;">
+                <div class="container">
+                    <div class="text-center mb-2xl">
+                        <h2 style="margin-bottom: var(--spacing-lg);">Why Choose RealtyAI?</h2>
+                        <p style="color: var(--color-gray-500); max-width: 600px; margin: 0 auto;">Everything you need to create stunning real estate listings that sell faster.</p>
+                    </div>
+                    <div class="grid grid-cols-3 mt-2xl" id="features-grid">
+                    </div>
+                </div>
+            </section>
+
+            <section class="pricing" id="pricing" style="padding: var(--spacing-5xl) 0;">
+                <div class="container">
+                    <div class="text-center mb-2xl">
+                        <h2 style="margin-bottom: var(--spacing-lg);">Simple, Transparent Pricing</h2>
+                        <p style="color: var(--color-gray-500);">Start free, upgrade when you're ready.</p>
+                    </div>
+                    <div class="grid grid-cols-3 mt-2xl" id="pricing-grid">
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta" style="background: linear-gradient(135deg, var(--color-indigo-600), var(--color-indigo-800)); color: white; padding: var(--spacing-5xl) 0; text-align: center;">
+                <div class="container">
+                    <h2 style="color: white; margin-bottom: var(--spacing-lg);">Ready to Transform Your Listings?</h2>
+                    <p style="color: rgba(255,255,255,0.9); margin-bottom: var(--spacing-2xl); max-width: 600px; margin-left: auto; margin-right: auto;">
+                        Join thousands of real estate professionals who trust RealtyAI to create better listings.
+                    </p>
+                    <button class="btn btn-secondary btn-lg" id="cta-btn" style="background: white; color: var(--color-indigo-600);">Get Started Free</button>
+                </div>
+            </section>
+        </div>
+
+        <div data-page="login" class="hidden" style="min-height: calc(100vh - var(--header-height)); display: flex; align-items: center; justify-content: center; padding: var(--spacing-3xl) 0;">
+            <div class="container-narrow">
+                <div class="card" style="max-width: 440px; margin: 0 auto;">
+                    <div class="text-center mb-xl">
+                        <h2>Welcome Back</h2>
+                        <p class="text-gray">Log in to your RealtyAI account</p>
+                    </div>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="login-email" class="input" placeholder="you@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" class="input" placeholder="••••••••" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                    </form>
+                    <div class="divider-text">
+                        <span>OR</span>
+                    </div>
+                    <div class="flex gap-base">
+                        <button class="btn btn-secondary btn-block" id="google-login">
+                            <i data-feather="github" style="width: 16px;"></i>
+                            Google
+                        </button>
+                        <button class="btn btn-secondary btn-block" id="apple-login">
+                            <i data-feather="apple" style="width: 16px;"></i>
+                            Apple
+                        </button>
+                    </div>
+                    <div class="text-center mt-xl text-gray">
+                        Don't have an account? <a href="#" id="signup-link">Sign up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-page="signup" class="hidden" style="min-height: calc(100vh - var(--header-height)); display: flex; align-items: center; justify-content: center; padding: var(--spacing-3xl) 0;">
+            <div class="container-narrow">
+                <div class="card" style="max-width: 440px; margin: 0 auto;">
+                    <div class="text-center mb-xl">
+                        <h2>Create Account</h2>
+                        <p class="text-gray">Start your free trial today</p>
+                    </div>
+                    <form id="signup-form">
+                        <div class="grid grid-cols-2 gap-base">
+                            <div class="form-group">
+                                <label for="signup-firstname">First Name</label>
+                                <input type="text" id="signup-firstname" class="input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="signup-lastname">Last Name</label>
+                                <input type="text" id="signup-lastname" class="input" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-email">Email</label>
+                            <input type="email" id="signup-email" class="input" placeholder="you@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password">Password</label>
+                            <input type="password" id="signup-password" class="input" placeholder="••••••••" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                    </form>
+                    <div class="divider-text">
+                        <span>OR</span>
+                    </div>
+                    <div class="flex gap-base">
+                        <button class="btn btn-secondary btn-block" id="signup-google">
+                            <i data-feather="github" style="width: 16px;"></i>
+                            Google
+                        </button>
+                        <button class="btn btn-secondary btn-block" id="signup-apple">
+                            <i data-feather="apple" style="width: 16px;"></i>
+                            Apple
+                        </button>
+                    </div>
+                    <div class="text-center mt-xl text-gray">
+                        Already have an account? <a href="#" id="login-link">Log in</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo mb-lg">
+                        <div class="logo-icon">
+                            <i data-feather="home"></i>
+                        </div>
+                        <span>RealtyAI</span>
+                    </div>
+                    <p>AI-powered real estate listing platform that helps agents create professional listings in seconds.</p>
+                </div>
+                <div class="footer-column">
+                    <h5>Product</h5>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">API</a></li>
+                        <li><a href="#">Integrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RealtyAI. All rights reserved.</p>
+                <div class="flex gap-lg">
+                    <a href="#"><i data-feather="twitter" style="width: 20px;"></i></a>
+                    <a href="#"><i data-feather="facebook" style="width: 20px;"></i></a>
+                    <a href="#"><i data-feather="linkedin" style="width: 20px;"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Log In</h3>
+                <button class="modal-close" data-close-modal>&times;</button>
+            </div>
+            <p>Login modal content</p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="js/config.js"></script>
+    <script src="js/modules/api.js"></script>
+    <script src="js/modules/auth.js"></script>
+    <script src="js/modules/storage.js"></script>
+    <script src="js/modules/ui.js"></script>
+    <script src="js/modules/editor.js"></script>
+    <script src="js/pages/landing.js"></script>
+    <script src="js/pages/dashboard.js"></script>
+    <script src="js/pages/editor-steps.js"></script>
+    <script src="js/pages/admin.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

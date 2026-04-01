@@ -1,0 +1,61 @@
+# Git
+.git
+.gitignore
+
+# Environment files
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+env/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker (except what we need)
+!Dockerfile.backend
+!Dockerfile.frontend
+!nginx.conf
+docker-compose.yml
+
+# Documentation
+docs/
+README.md
+CHANGELOG.md
+*.md
+!docker/README.md
+
+# Uploads
+uploads/
+
+# Frontend build artifacts
+frontend/dist/
+frontend/build/

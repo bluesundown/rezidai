@@ -1,0 +1,40 @@
+# Stage 1: Build (optional, for future build tools)
+FROM node:20-alpine as builder
+
+WORKDIR /app
+
+# Copy frontend files
+COPY frontend/ ./
+
+# Add build step here if needed in future
+# RUN npm install && npm run build
+
+# Stage 2: Production
+FROM nginx:alpine as production
+
+# Install health check tool
+RUN apk add --no-cache wget
+
+# Copy nginx configuration
+COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copy frontend files from builder or directly
+COPY --from=builder /app /usr/share/nginx/html
+# Or if no build step needed:
+# COPY frontend/ /usr/share/nginx/html
+
+# Create custom logs directory
+RUN mkdir -p /var/log/nginx/custom && \
+    chown -R nginx:nginx /usr/share/nginx/html && \
+    chown -R nginx:nginx /var/log/nginx
+
+# Expose port
+EXPOSE 80
+EXPOSE 443
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost/index.html || exit 1
+
+# Run nginx
+CMD ["nginx", "-g", "daemon off;"]

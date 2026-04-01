@@ -1,0 +1,122 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+env/
+.env/
+.eggs/
+*.egg-info/
+*.egg
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+!*.db.example
+
+# Uploads
+uploads/
+uploads/*
+!uploads/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.swn
+.project
+.pydevproject
+.settings/
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Testing
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.coverage
+pytest_cache/
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Node modules
+node_modules/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Docker
+docker-compose.override.yml
+!docker-compose.yml
+!docker-compose.prod.yml
+
+# MyPy
+.mypy_cache/
+
+# Pyre
+.pyre/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# AWS
+.aws/
+
+# Local
+local/
+
+# Backup
+*.bak
+*.backup
+
+# Temporary files
+*.tmp
+*.temp
+~*
+
+# Alembic
+alembic/versions/*.pyc
+alembic/versions/__pycache__
+
+# Flask
+instance/
+.webassets-cache
+
+# Celery
+celery/

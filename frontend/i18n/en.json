@@ -1,0 +1,98 @@
+{
+  "common": {
+    "home": "Home",
+    "features": "Features",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "login": "Log In",
+    "signup": "Sign Up",
+    "getStarted": "Get Started",
+    "logout": "Logout",
+    "dashboard": "Dashboard",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "update": "Update",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "publish": "Publish",
+    "draft": "Draft",
+    "published": "Published"
+  },
+  "landing": {
+    "heroTitle": "Create Professional Real Estate Listings in Seconds",
+    "heroSubtitle": "Leverage AI to generate compelling property descriptions, enhance photos automatically, and close deals faster.",
+    "ctaButton": "Start Free Trial",
+    "demoButton": "Watch Demo",
+    "noCreditCard": "No credit card required",
+    "freeListings": "3 listings free"
+  },
+  "auth": {
+    "welcomeBack": "Welcome Back",
+    "loginPrompt": "Log in to your RealtyAI account",
+    "createAccount": "Create Account",
+    "signupPrompt": "Start your free trial today",
+    "email": "Email",
+    "password": "Password",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "or": "OR",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?"
+  },
+  "editor": {
+    "step1": {
+      "title": "Basic Information",
+      "subtitle": "Start with the essentials",
+      "listingTitle": "Listing Title",
+      "propertyType": "Property Type",
+      "transactionType": "Transaction Type",
+      "price": "Price",
+      "address": "Address",
+      "city": "City",
+      "state": "State",
+      "postalCode": "Postal Code"
+    },
+    "step2": {
+      "title": "Property Details",
+      "subtitle": "Add the specifics",
+      "bedrooms": "Bedrooms",
+      "bathrooms": "Bathrooms",
+      "squareFeet": "Square Feet",
+      "yearBuilt": "Year Built",
+      "description": "Description",
+      "amenities": "Amenities"
+    },
+    "step3": {
+      "title": "Upload Photos",
+      "subtitle": "Show off your property (up to 10 images)",
+      "uploadPrompt": "Click to upload or drag and drop",
+      "fileTypes": "JPG, PNG, WEBP up to 20MB"
+    },
+    "step4": {
+      "title": "AI Description",
+      "subtitle": "Let AI craft the perfect description",
+      "tone": "Tone",
+      "focus": "Focus",
+      "generateButton": "Generate Description",
+      "nearbyPOI": "Nearby Points of Interest"
+    },
+    "step5": {
+      "title": "Review & Publish",
+      "subtitle": "Double-check everything before publishing",
+      "photos": "Photos",
+      "description": "Description"
+    }
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "required": "This field is required",
+    "invalidEmail": "Please enter a valid email address",
+    "passwordShort": "Password must be at least 8 characters",
+    "uploadFailed": "Failed to upload file",
+    "networkError": "Network error. Please check your connection."
+  }
+}
