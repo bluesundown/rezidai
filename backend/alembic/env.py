@@ -43,12 +43,13 @@ def run_migrations_offline():
 
 def run_migrations_online():
     """Run migrations in 'online' mode."""
-    configuration = config.get_section(config.config_ini_section)
-    connectable = engine_from_config(
-        configuration,
-        prefix="sqlalchemy.",
-        poolclass=pool.NullPool,
-    )
+    from sqlalchemy import create_engine
+    
+    # Get database URL from our config
+    url = get_url()
+    
+    # Create engine directly
+    connectable = create_engine(url)
 
     with connectable.connect() as connection:
         context.configure(
