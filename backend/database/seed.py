@@ -111,6 +111,21 @@ def seed_database(db: Session):
     logger.info("Database seeded successfully!")
 
 if __name__ == "__main__":
-    from database.connection import SessionLocal
+    import sys
+    from database.connection import SessionLocal, Base, engine
+    
+    # Ensure tables exist
+    try:
+        Base.metadata.create_all(bind=engine)
+        print("✅ Ensured database tables exist")
+    except Exception as e:
+        print(f"⚠️  Could not create tables: {e}")
+        sys.exit(1)
+    
     with SessionLocal() as db:
-        seed_database(db)
+        try:
+            seed_database(db)
+        except Exception as e:
+            print(f"❌ Seeding failed: {e}")
+            db.rollback()
+            sys.exit(1)

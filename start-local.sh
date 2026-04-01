@@ -73,11 +73,44 @@ fi
 
 echo ""
 echo "📊 Database migrations..."
-cd backend
-alembic upgrade head 2>/dev/null || echo "⚠️  Migrations might already be applied"
 
+# Run migrations with proper error handling
+if alembic upgrade head; then
+    echo "✅ Migrations completed successfully"
+else
+    echo "⚠️  Migrations failed or database doesn't exist"
+    echo "Creating database tables manually..."
+    
+    # Create database using SQLAlchemy
+    python -c "
+import sys
+sys.path.insert(0, '.')
+from database.connection import Base, engine, DATABASE_URL
+from sqlalchemy import text
+
+try:
+    # Create all tables
+    Base.metadata.create_all(bind=engine)
+    print('✅ Database tables created successfully')
+except Exception as e:
+    print(f'❌ Failed to create tables: {e}')
+    sys.exit(1)
+"
+    
+    if [ $? -ne 0 ]; then
+        echo "❌ Database setup failed!"
+        exit 1
+    fi
+fi
+
+echo ""
 echo "🌱 Seeding database..."
-python -m database.seed
+if python -m database.seed; then
+    echo "✅ Database seeded successfully"
+else
+    echo "❌ Seeding failed!"
+    exit 1
+fi
 
 echo ""
 echo "=========================================="
