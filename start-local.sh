@@ -73,6 +73,7 @@ fi
 
 echo ""
 echo "📊 Database migrations..."
+cd backend
 
 # Run migrations with proper error handling
 if alembic upgrade head; then
@@ -83,10 +84,7 @@ else
     
     # Create database using SQLAlchemy
     python -c "
-import sys
-sys.path.insert(0, '.')
-from database.connection import Base, engine, DATABASE_URL
-from sqlalchemy import text
+from database.connection import Base, engine
 
 try:
     # Create all tables
@@ -94,6 +92,7 @@ try:
     print('✅ Database tables created successfully')
 except Exception as e:
     print(f'❌ Failed to create tables: {e}')
+    import sys
     sys.exit(1)
 "
     
